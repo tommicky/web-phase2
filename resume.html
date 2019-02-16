@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>::Resume Profile</title>
+</head>
+<body>
+	<div class="main">
+		<div class="left">
+
+	</div>
+	<div class="right">
+		</div>
+		
+</body>
+</html>
+<script type="text/javascript">
+	var url= window.location.search;
+	var length=url.length;
+	var profile=url.slice(1,length);
+
+	var indexedDB=window.indexedDB || window.mozIndexedDB || window.webkitIndexedBD || window.msIndexedDB;
+    indexedDB ? console.log("success") : console.log("error");
+    var open;
+    var result;
+    var store;
+    var tx;
+    var request = indexedDB.open("database",1);
+     request.onupgradeneeded = function (e){
+     	open = e.target.result;
+     	store = open.createObjectStore("resumedata",{keyPath:"name"});
+
+     } 
+     request.onerror=function(e){
+     	console.log("error"+e);
+     }
+
+     request.onsuccess = function(e){
+     	open = e.target.result;
+     	tx = open.transaction("resumedata","readwrite");
+     	store = tx.objectStore("resumedata");
+    var info=store.getAll();
+     	info.onsuccess=function(data){
+     		console.log(data);
+     		display(data.target.result);
+     	}
+     }
+     var left=document.querySelector(".left");
+     var right=document.querySelector(".right");
+     function display(d){
+     	var image=document.createElement("img");
+     	image.src="./image 2.jpeg";
+     	left.append(image);
+     	var h2=document.createElement("h2");
+	h2.textContent=d.name;
+	left.appendChild(h2);
+
+	var h21=document.createElement("h3");
+	h21.textContent=d.rollno;
+	left.appendChild(h21);
+
+	var h22=document.createElement("h3");
+	h22.textContent=d.native;
+	left.appendChild(h22);
+
+	var h23=document.createElement("h3");
+	h23.textContent=d.mail;
+	left.appendChild(h23);
+	var h1=document.createElement("h1");
+	h1.innerHTML="RESUME BULDING";
+	right.appendChild(h1);
+	var e1=document.createElement("h2");
+	e1.textContent="career objective";
+	right.appendChild(e1);
+	var hr=document.createElement("hr");
+	right.appendChild(hr);
+	var p=document.createElement("p");
+	p.textContent=d.car;
+	right.appendChild(p);
+
+	var h2=document.createElement("h2");
+	h2.innerHTML="educational details";
+	right.appendChild(h2);
+	var ww=document.createElement("hr");
+	right.appendChild(ww);
+	var table=document.createElement("table");
+	table.border="1";
+	var tr1="<tr><td>sno</td><td>degree</td><td>institute</td><td>per</td><td>yop</td></tr>";
+	var tr2=" ";
+
+	for(i=0;i<d.length;i++)
+	{
+		tr2=tr2+"<tr><td>"+d[i].sno+"</td><td>"+d[i].degree+"</td><td>"+d[i].institute+"</td><td>"+d[i].per+"</td><td>"+d[i].yop+"</td></tr>";
+	}
+	table.innerHTML=tr1+tr2;
+	right.appendChild(table);
+	for(var in d.education){
+		var h4=document.createElement("h4");
+		h4.textContent=d.education[i].degree;
+		right.append(h4);
+		var ul=document.createElement("ul");
+		var instli=document.createElement("li");
+		instli.textContent=d.education[i].inst;
+		ul.appendChild(instli);
+		var perli=document.createElement("li");
+		perli.textContent=d.education[i].per;
+		ul.appendChild(perli);
+		var yopli=document.createElement("li");
+		yopli.textContent=d.education[i].per;
+		ul.appendChild(yopli);
+		h4.appendChild(ul);
+
+	}
+
+ 	}
+</script>

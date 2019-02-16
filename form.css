@@ -1,0 +1,60 @@
+
+#main{
+	background: #D5DBDB;
+	text-align: center;
+}
+header{
+	background: #48C9B8;
+	height: 10%;
+	padding: 1%;
+	margin:1%;
+}
+#main a{
+	text-decoration: none;
+	text-align: center;
+}
+#main button{
+	background: yellow;
+}
+
+#form{
+	background: skyblue;
+}
+.main{
+	background-color: orange;
+	margin: 2%;
+	padding: 2%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	}
+	.sub{
+		width: 92%;
+		background: yellow;
+		margin:1%;
+		padding:1%;
+		border-radius: 6%;
+	   }
+	.sub1{
+		width: 43%;
+		background: white;
+		margin:1%;
+		padding:1%;
+		border-radius: 10%;
+	}
+	input,select{
+		width:90%;
+		margin: 1%;
+	}
+	button{
+		height: 7%;
+		width: 7%;
+		border-radius: 50%;
+		background: #F1C40F;
+		margin-left: 45%;
+	}
+	.profile{
+		color:red;
+	}
+	 
